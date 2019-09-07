@@ -1,5 +1,5 @@
 from display import show_board
-from engine import cpu
+from engine import cpu as cpu
 from rules import do_move, check_win, find_moves
 
 
@@ -11,7 +11,7 @@ def make_move(board, piece, player):
         print()
         print(" player  ", player)
         if "CPU" in player:
-            col, score = cpu(board, piece, 0, 100)
+            col, score = cpu(board, piece, 5, 100)
             print(col, score)
         else:
             col = int(input("enter the column number: "))

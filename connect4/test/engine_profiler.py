@@ -1,5 +1,5 @@
 import cProfile
-from connect4.engine import cpu
+from connect4.engine import cpu as cpu
 
 
 def test_1():
@@ -10,7 +10,7 @@ def test_1():
              [' ', ' ', ' ', ' ', ' ', ' ', ' '],
              [' ', ' ', ' ', ' ', ' ', ' ', ' '],
              [' ', ' ', ' ', ' ', ' ', ' ', ' ']]
-    cProfile.runctx("print(cpu(board,'X',0, 1000))",
+    cProfile.runctx("print(cpu(board,'X',6, 1000))",
                     {"board": board, "cpu": cpu}, {})
 
 

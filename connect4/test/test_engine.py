@@ -1,5 +1,5 @@
 import unittest
-from connect4.engine import cpu
+from connect4.engine import cpu as cpu
 
 
 class TestCheckCPU(unittest.TestCase):
