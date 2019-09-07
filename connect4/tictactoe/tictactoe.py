@@ -2,10 +2,11 @@ def display(board):
     """displays the board.Outer list is row number,inner list is column"""
     for i in board:
         print()
-        print("-"*9)
+        print("-" * 9)
         for j in i:
-            print(j, end = "  ")
+            print(j, end="  ")
     print()
+
 
 def make_move(board, current_player, player1, player2, PossibleMoves):
     if current_player == 1:
@@ -22,8 +23,8 @@ def make_move(board, current_player, player1, player2, PossibleMoves):
             move = input("Enter number that you would like piece to replace: ")
             print(move)
         else:
-            print("AI has played: ",end="")
-            move,score = AI(board, current_player, 0)
+            print("AI has played: ", end="")
+            move, score = AI(board, current_player, 0)
             print(move)
             print(score)
         if move in PossibleMoves:
@@ -34,22 +35,25 @@ def make_move(board, current_player, player1, player2, PossibleMoves):
             break
     return board
 
+
 def find_moves(board):
-    moves=[]
+    moves = []
     for row in board:
         for pos in row:
             if pos != "X" and pos != "O":
                 moves.append(pos)
     return moves
 
+
 def check_win(board):
     if (board[0][0] == board[1][1] == board[2][2]
-        or board[0][2] == board[1][1] == board[2][0]):
-            return True
+            or board[0][2] == board[1][1] == board[2][0]):
+        return True
     for i in range(3):
         if (board[i][0] == board[i][1] == board[i][2]
-        or board[0][i] == board[1][i] == board[2][i]):
+                or board[0][i] == board[1][i] == board[2][i]):
             return True
+
 
 def AI(board, player, depth):
     if player == 1:
@@ -78,9 +82,9 @@ def AI(board, player, depth):
                 best_counter_move, score = AI(board,
                                               1 if player == 2 else 2,
                                               depth + 1)
-                heuristic_modifier += score/50
+                heuristic_modifier += score / 50
                 if depth == 0:
-                    print(move,best_counter_move, score)
+                    print(move, best_counter_move, score)
             # choose move to minimize opponent's happiness with move
             if score < opponent_worst_score:
                 opponent_worst_score = score
@@ -94,14 +98,12 @@ def AI(board, player, depth):
     elif best_score > 1:
         best_score -= 1
     return best_move, best_score - heuristic_modifier
-        
-        
-    
+
 
 def main():
-    board = [["1","2","3"],
-             ["4","5","6"],
-             ["7","8","9"]]
+    board = [["1", "2", "3"],
+             ["4", "5", "6"],
+             ["7", "8", "9"]]
     current_player = 1
     option = input("2 Player('2') or AI('AI'): ")
     if option == '2':
@@ -115,7 +117,7 @@ def main():
         else:
             player1 = 'AI'
             player2 = 'human'
-    won=False
+    won = False
     while not won:
         display(board)
         possible_moves = find_moves(board)
@@ -134,7 +136,7 @@ def main():
             else:
                 print("player 2 wins:")
         current_player = 2 if current_player == 1 else 1
-            
+
+
 if __name__ == "__main__":
     main()
-    
