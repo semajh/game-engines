@@ -1,5 +1,5 @@
 import cProfile
-import tictactoe
+from tictactoe import tictactoe
 
 
 def test_1():
